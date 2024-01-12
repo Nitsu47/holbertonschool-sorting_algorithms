@@ -1,5 +1,5 @@
-#ifndef SORT_H
-#define SORT_H
+#ifndef SORT_H_
+#define SORT_H_
 /**
  * Libraries
  */
@@ -31,6 +31,5 @@ void quick_sort(int *array, size_t size);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void swap(int *a, int *b);
-
 
 #endif
