@@ -30,3 +30,15 @@ void bubble_sort(int *array, size_t size)
 	}
 	print_array(array, size);
 }
+
+/**
+ * swap - swaps two integers
+ * Return: a and b swaped
+ */
+
+void swap(int *a, int *b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
