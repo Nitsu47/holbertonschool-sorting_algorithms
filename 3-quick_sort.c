@@ -4,6 +4,7 @@
  * @array: pointer to the array of integers.
  * @low: first value in array.
  * @high: last value in array.
+ * @size: size
  * Return: Pivot number.
  */
 
@@ -30,6 +31,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  * @array: pointer to the array of integers.
  * @low: first value in array.
  * @high: last value in array.
+ * @size: size
  * Return: Pivot number.
  */
 void quicksort_recursion(int *array, int low, int high, size_t size)
@@ -62,6 +64,8 @@ void quick_sort(int *array, size_t size)
  * Return: a and b swaped
  * @a: first thing for swap
  * @b: second swap parameter
+ * @size: size of array
+ * @array: array
  */
 void swap(int *a, int *b, size_t size, int *array)
 {
