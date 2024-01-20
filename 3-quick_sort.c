@@ -17,12 +17,11 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	{
 		if (array[j] <= pivot_value)
 		{
-			print_array(array, size);
-			swap(&array[i], &array[j]);
+			swap(&array[i], &array[j], size, array);
 			i++;
 		}
 	}
-	swap(&array[i], &array[high]);
+	swap(&array[i], &array[high], size, array);
 	return (i);
 }
 
@@ -33,7 +32,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  * @high: last value in array.
  * Return: Pivot number.
  */
-void quicksort_recursion(int array[], int low, int high, size_t size)
+void quicksort_recursion(int *array, int low, int high, size_t size)
 {
 	int pivot_index;
 	
@@ -62,11 +61,15 @@ void quick_sort(int *array, size_t size)
  * @a: first thing for swap
  * @b: second swap parameter
  */
-void swap(int *a, int *b)
+void swap(int *a, int *b, size_t size, int *array)
 {
 	int temp;
 
+	if (a != b)
+	{
 	temp = *a;
 	*a = *b;
 	*b = temp;
+	print_array(array, size);
+	}
 }
