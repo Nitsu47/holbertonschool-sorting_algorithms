@@ -6,22 +6,44 @@
  * @high: last value in array.
  * Return: Pivot number.
  */
-int lomuto_partition(int *array, int low, int high, int size)
-{
-	int pivot = array[high];
-	int i, minor_to_pivot = low - 1;
 
-	for (i = 0; i < high; i++)
+int lomuto_partition(int *array, int low, int high, size_t size)
+{
+	int pivot_value, i = low, j;
+
+	pivot_value = array[high];
+
+	for(j = low; j < high; j++)
 	{
-		if (array[i] <= pivot)
+		if (array[j] <= pivot_value)
 		{
-			minor_to_pivot++;
+			swap(&array[i], &array[j]);
 			print_array(array, size);
-			swap(&array[minor_to_pivot], &array[i]);
+			i++;
 		}
 	}
-	swap(&array[i + 1], &array[high]);
-	return (i + 1);
+	swap(&array[i], &array[high]);
+	return (i);
+}
+
+/**
+ * quicksort_recursion - recursion
+ * @array: pointer to the array of integers.
+ * @low: first value in array.
+ * @high: last value in array.
+ * Return: Pivot number.
+ */
+void quicksort_recursion(int array[], int low, int high, size_t size)
+{
+	int pivot_index;
+	
+	if (low < high)
+	{
+		pivot_index = lomuto_partition(array, low, high, size);
+		quicksort_recursion(array, low, pivot_index -1, size);
+		quicksort_recursion(array, pivot_index + 1, high, size);
+	}
+
 }
 /**
  * quick_sort - sorts an array of integers in ascending,
@@ -32,7 +54,7 @@ int lomuto_partition(int *array, int low, int high, int size)
  */
 void quick_sort(int *array, size_t size)
 {
-
+	quicksort_recursion(array, 0, size - 1, size);
 }
 /**
  * swap - swaps two integers
@@ -42,7 +64,9 @@ void quick_sort(int *array, size_t size)
  */
 void swap(int *a, int *b)
 {
-	int temp = *a;
+	int temp;
+
+	temp = *a;
 	*a = *b;
 	*b = temp;
 }
