@@ -35,7 +35,7 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 void quicksort_recursion(int *array, int low, int high, size_t size)
 {
 	int pivot_index;
-	
+
 	if (low < high)
 	{
 		pivot_index = lomuto_partition(array, low, high, size);
@@ -44,6 +44,7 @@ void quicksort_recursion(int *array, int low, int high, size_t size)
 	}
 
 }
+
 /**
  * quick_sort - sorts an array of integers in ascending,
  * order using the Quick sort algorithm.
@@ -55,6 +56,7 @@ void quick_sort(int *array, size_t size)
 {
 	quicksort_recursion(array, 0, size - 1, size);
 }
+
 /**
  * swap - swaps two integers
  * Return: a and b swaped
